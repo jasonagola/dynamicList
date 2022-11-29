@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dynamiclist-dev-113520-authRole",
+      "UnauthRoleArn": "arn:aws:iam::230911290231:role/amplify-dynamiclist-dev-113520-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::230911290231:role/amplify-dynamiclist-dev-113520-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-dynamiclist-dev-113520-deployment",
+      "UnauthRoleName": "amplify-dynamiclist-dev-113520-unauthRole",
+      "StackName": "amplify-dynamiclist-dev-113520",
+      "StackId": "arn:aws:cloudformation:us-east-1:230911290231:stack/amplify-dynamiclist-dev-113520/d18d61f0-7003-11ed-8244-0ecc6e1008cb",
+      "AmplifyAppId": "d2x3gkzs13gg2z"
+    },
+    "categories": {
+      "auth": {
+        "dynamiclistab9f3f0e": {}
+      },
+      "api": {
+        "dynamiclist": {}
+      }
+    }
+  }
+}
