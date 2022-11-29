@@ -17,13 +17,13 @@ import { arrayMove, insertAtIndex, removeAtIndex } from "./utils/array";
 import "./App.css";
 
 function Queue() {
-  // const [itemGroups, setItemGroups] = useState({
-  //   "Service": ["Rockhopper", "Blue State 4130", "3"],
-  //   "Ready for Pickup": ["4", "5", "6"],
-  //   "Waiting for Parts": ["7", "8", "9"]
-  // });
+  const [itemGroups, setItemGroups] = useState({
+    "Service": ["Rockhopper", "Blue State 4130", "3"],
+    "Ready for Pickup": ["4", "5", "6"],
+    "Waiting for Parts": ["7", "8", "9"]
+  });
 
-  const [itemGroups, setItemGroups] = useState({})
+  // const [itemGroups, setItemGroups] = useState({})
 
   const [activeId, setActiveId] = useState(null);
 
