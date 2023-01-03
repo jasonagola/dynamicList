@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -15,17 +15,69 @@ import Item from "./components/Item";
 import { arrayMove, insertAtIndex, removeAtIndex } from "./utils/array";
 
 import "./App.css";
+import { API, graphqlOperation } from "aws-amplify";
+import { listServiceTickets } from "./graphql/queries";
+import store from "./features/store";
+import { refreshQueue } from "./features/QueueList/queueListSlice";
 
 function Queue() {
+  const [serviceTickets, setServiceTickets] = useState({})
+  const [queueLoaded, setQueueLoaded] = useState(false)
 
-  
   const [itemGroups, setItemGroups] = useState({
-    "Service": ["Rockhopper", "Blue State 4130", "3"],
+    "Queue": ["Rockhopper", "Blue State 4130", "3"],
     "Ready for Pickup": ["4", "5", "6"],
-    "Waiting for Parts": ["7", "8", "9"]
+    "Parts Waiting": ["7", "8", "9"]
   });
 
-  // const [itemGroups, setItemGroups] = useState({})
+  async function fetchServiceTickets() {
+    try { 
+    const serviceTicketList = await API.graphql(graphqlOperation(listServiceTickets))
+    setServiceTickets(serviceTicketList.data.listServiceTickets.items)
+  } catch (error) {
+      console.log('Unable to load tickets', error)
+  }
+}
+
+// const objbefore = serviceTickets
+// console.log(objbefore)
+// const obj = Object.fromEntries(serviceTickets)
+// console.log(obj)
+
+  useEffect(() => {
+    fetchServiceTickets()
+    }, [])
+
+  useEffect(() => {
+    parseServiceTickets()
+    const tickets = {}
+    Object.values(serviceTickets).forEach((ticket) => {
+        return tickets[ticket.id] = ticket
+      })
+    store.dispatch(refreshQueue(tickets))
+    setQueueLoaded(true)
+  }, [serviceTickets])
+
+  const parseServiceTickets = () => {
+    let itemGroupQueue = []
+    let itemGroupPickup = []
+    let itemGroupPartsWaiting = []
+    Object.values(serviceTickets).forEach((ticket) => {  
+      switch (ticket.serviceRequest.status) {
+        case "Queue":
+          return itemGroupQueue.push([ticket.id])
+        case "Ready for Pickup":
+          return itemGroupPickup.push([ticket.id])
+        case "Waiting for Parts":
+          return itemGroupPartsWaiting.push([ticket.id])
+      }
+    })
+    setItemGroups({
+      "Queue": itemGroupQueue,
+      "Ready for Pickup": itemGroupPickup,
+      "Parts Waiting": itemGroupPartsWaiting
+    })
+  }
 
   const [activeId, setActiveId] = useState(null);
 
@@ -130,6 +182,10 @@ function Queue() {
     };
   };
 
+  if (!queueLoaded) {
+    return <div>Loading Queue!....</div>
+  }
+
   return (
     <DndContext
       sensors={sensors}
@@ -145,6 +201,7 @@ function Queue() {
             items={itemGroups[group]}
             activeId={activeId}
             key={group}
+            loaded={queueLoaded}
           >
           </Droppable>
         ))}

@@ -1,0 +1,24 @@
+/* ServiceTicket {
+    width: 75vw
+}
+
+SearchWindow {
+    width: 25vw
+} */
+#serviceTicket {
+    width: 67%;
+    height: 100%;
+    background-color: pink;
+    
+}
+
+#searchWindow {
+    width: 33%;
+    height: 100%;
+}
+
+#ticketCreator {
+    display: flex;
+    width: 100vw;
+    border: 2px solid black;
+}

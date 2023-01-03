@@ -1,7 +1,11 @@
 .container {
-  display: flex;
+  display: inline-block;
 }
 
 .container > * {
   margin: 5px;
+}
+
+.droppable {
+  background-color: rgba(45,104,91, 1);
 }

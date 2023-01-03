@@ -1,48 +1,117 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBike = /* GraphQL */ `
-  mutation CreateBike(
-    $input: CreateBikeInput!
-    $condition: ModelBikeConditionInput
+export const createServiceTicket = /* GraphQL */ `
+  mutation CreateServiceTicket(
+    $input: CreateServiceTicketInput!
+    $condition: ModelServiceTicketConditionInput
   ) {
-    createBike(input: $input, condition: $condition) {
+    createServiceTicket(input: $input, condition: $condition) {
       id
-      color
-      make
-      model
+      customer {
+        id
+        firstName
+        lastName
+        phoneNumber
+        hasBikes {
+          id
+          color
+          make
+          model
+        }
+      }
+      serviceRequest {
+        request
+        date
+        partsRequired
+        partsRequest
+        status
+      }
+      bike {
+        id
+        color
+        make
+        model
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const updateBike = /* GraphQL */ `
-  mutation UpdateBike(
-    $input: UpdateBikeInput!
-    $condition: ModelBikeConditionInput
+export const updateServiceTicket = /* GraphQL */ `
+  mutation UpdateServiceTicket(
+    $input: UpdateServiceTicketInput!
+    $condition: ModelServiceTicketConditionInput
   ) {
-    updateBike(input: $input, condition: $condition) {
+    updateServiceTicket(input: $input, condition: $condition) {
       id
-      color
-      make
-      model
+      customer {
+        id
+        firstName
+        lastName
+        phoneNumber
+        hasBikes {
+          id
+          color
+          make
+          model
+        }
+      }
+      serviceRequest {
+        request
+        date
+        partsRequired
+        partsRequest
+        status
+      }
+      bike {
+        id
+        color
+        make
+        model
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const deleteBike = /* GraphQL */ `
-  mutation DeleteBike(
-    $input: DeleteBikeInput!
-    $condition: ModelBikeConditionInput
+export const deleteServiceTicket = /* GraphQL */ `
+  mutation DeleteServiceTicket(
+    $input: DeleteServiceTicketInput!
+    $condition: ModelServiceTicketConditionInput
   ) {
-    deleteBike(input: $input, condition: $condition) {
+    deleteServiceTicket(input: $input, condition: $condition) {
       id
-      color
-      make
-      model
+      customer {
+        id
+        firstName
+        lastName
+        phoneNumber
+        hasBikes {
+          id
+          color
+          make
+          model
+        }
+      }
+      serviceRequest {
+        request
+        date
+        partsRequired
+        partsRequest
+        status
+      }
+      bike {
+        id
+        color
+        make
+        model
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;

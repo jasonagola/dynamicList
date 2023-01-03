@@ -1,39 +1,117 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBike = /* GraphQL */ `
-  subscription OnCreateBike($filter: ModelSubscriptionBikeFilterInput) {
-    onCreateBike(filter: $filter) {
+export const onCreateServiceTicket = /* GraphQL */ `
+  subscription OnCreateServiceTicket(
+    $filter: ModelSubscriptionServiceTicketFilterInput
+    $owner: String
+  ) {
+    onCreateServiceTicket(filter: $filter, owner: $owner) {
       id
-      color
-      make
-      model
+      customer {
+        id
+        firstName
+        lastName
+        phoneNumber
+        hasBikes {
+          id
+          color
+          make
+          model
+        }
+      }
+      serviceRequest {
+        request
+        date
+        partsRequired
+        partsRequest
+        status
+      }
+      bike {
+        id
+        color
+        make
+        model
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const onUpdateBike = /* GraphQL */ `
-  subscription OnUpdateBike($filter: ModelSubscriptionBikeFilterInput) {
-    onUpdateBike(filter: $filter) {
+export const onUpdateServiceTicket = /* GraphQL */ `
+  subscription OnUpdateServiceTicket(
+    $filter: ModelSubscriptionServiceTicketFilterInput
+    $owner: String
+  ) {
+    onUpdateServiceTicket(filter: $filter, owner: $owner) {
       id
-      color
-      make
-      model
+      customer {
+        id
+        firstName
+        lastName
+        phoneNumber
+        hasBikes {
+          id
+          color
+          make
+          model
+        }
+      }
+      serviceRequest {
+        request
+        date
+        partsRequired
+        partsRequest
+        status
+      }
+      bike {
+        id
+        color
+        make
+        model
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const onDeleteBike = /* GraphQL */ `
-  subscription OnDeleteBike($filter: ModelSubscriptionBikeFilterInput) {
-    onDeleteBike(filter: $filter) {
+export const onDeleteServiceTicket = /* GraphQL */ `
+  subscription OnDeleteServiceTicket(
+    $filter: ModelSubscriptionServiceTicketFilterInput
+    $owner: String
+  ) {
+    onDeleteServiceTicket(filter: $filter, owner: $owner) {
       id
-      color
-      make
-      model
+      customer {
+        id
+        firstName
+        lastName
+        phoneNumber
+        hasBikes {
+          id
+          color
+          make
+          model
+        }
+      }
+      serviceRequest {
+        request
+        date
+        partsRequired
+        partsRequest
+        status
+      }
+      bike {
+        id
+        color
+        make
+        model
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;

@@ -2,9 +2,33 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Bike @model {
+type ServiceTicket @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  customer: Customer!
+  serviceRequest: ServiceRequest!
+  bike: Bike!
+}
+
+type Bike {
   id: ID!
   color: String!
   make: String!
   model: String!
 }
+  
+type ServiceRequest {
+  request: String!
+  date: String!
+  partsRequired: Boolean
+  partsRequest: String
+  status: String!
+}
+
+type Customer {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  phoneNumber: String!
+  hasBikes: [Bike]
+}
+

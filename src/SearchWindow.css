@@ -1,0 +1,27 @@
+#searchWindow {
+    height: 100%;
+    border: 2px solid orange;
+    overflow: scroll
+}
+
+
+#searchResults {
+    overflow: scroll;
+}
+
+table {
+    width: 100%
+}
+
+table tr:nth-child(even) {
+    background-color: #FAFAF9;
+}
+
+table tr:nth-child(odd) {
+    background-color: #E8E8E8;
+}
+
+button {
+    display: inline-block;
+    float: right;
+}
