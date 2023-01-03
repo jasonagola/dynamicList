@@ -3,7 +3,7 @@ The aim of this project is to build a dynamic work queue that can be used to int
 
 ## Technologies
 * React
-* AWS Amplify --> Private hosting
+* AWS Amplify
 * GraphQL --> MySQL
 
 ## RoadMap
